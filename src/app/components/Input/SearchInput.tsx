@@ -27,17 +27,22 @@ const Input = styled.input`
   }
 `;
 
-export default function SearchInput() {
-  const [content, setContent] = React.useState('');
+export default function SearchInput({
+  search,
+  onChange,
+}: {
+  search: string;
+  onChange: (content: string) => void;
+}) {
   return (
     <Box>
       <SearchIcon />
       <Input
         type="text"
-        value={content}
+        value={search}
         placeholder="검색"
         onChange={e => {
-          setContent(e.target.value);
+          onChange(e.target.value);
         }}
       />
     </Box>
