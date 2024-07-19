@@ -50,9 +50,13 @@ export default function MemoItem({
       selected={selected}
       onClick={() => dispatch(MemoActions.selectMemo({ id: id }))}
     >
-      <MemoTitle>{preview}</MemoTitle>
+      <MemoTitle>
+        {preview.replace(/\n/g, '') !== '' ? preview : '내용을 입력해주세요.'}
+      </MemoTitle>
       <MemoContent>{new Date(created_at).toLocaleString('ko')}</MemoContent>
-      <MemoContent>{preview}</MemoContent>
+      <MemoContent>
+        {preview.replace(/\n/g, '') !== '' ? preview : '내용을 입력해주세요.'}
+      </MemoContent>
     </Box>
   );
 }
